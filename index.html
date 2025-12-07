@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+    <div class="app-shell">
+        <div class="chat-card">
+            <!-- ヘッダー -->
+            <header class="chat-header">
+                <div class="chat-header-left">
+                    <button class="icon-btn back-btn" aria-label="Back">←</button>
+                    <div class="chat-user">
+                        <div class="chat-avatar">
+                            <img src="https://via.placeholder.com/40x40.png?text=C" alt="avatar" />
+                        </div>
+                        <div class="chat-user-text">
+                            <div class="chat-user-name">Chat</div>
+                            <div class="chat-user-status">Online</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-header-right">
+                    <button class="icon-btn" aria-label="Search">🔍</button>
+                    <button class="icon-btn" aria-label="More">⋮</button>
+                </div>
+            </header>
+
+            <!-- メイン（メッセージ + クイック返信） -->
+            <main class="chat-main">
+                <div id="chat-window" class="chat-window">
+                    <!-- JS でメッセージが入る -->
+                </div>
+
+                <div class="quick-replies">
+                    <div class="quick-title">Quick Replies</div>
+                    <div class="quick-scroll">
+                        <button class="quick-btn" data-text="こんにちは">こんにちは</button>
+                        <button class="quick-btn" data-text="自己紹介して">自己紹介して</button>
+                        <button class="quick-btn" data-text="機能を教えて">機能を教えて</button>
+                        <button class="quick-btn" data-text="趣味の話をしよう">趣味の話をしよう</button>
+                        <button class="quick-btn" data-text="仕事の話をしよう">仕事の話をしよう</button>
+                        <button class="quick-btn" data-text="旅行の話をしよう">旅行の話をしよう</button>
+                    </div>
+                </div>
+            </main>
+
+            <!-- 入力エリア -->
+            <div class="input-area">
+                <button class="icon-circle-btn attach-btn" aria-label="Attach">＋</button>
+                <div class="input-wrapper">
+                    <input id="message-input" type="text" placeholder="Type your message..." />
+                </div>
+                <button id="send-button" class="icon-circle-btn send-btn" aria-label="Send">▶</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ★ ここを「typeなしの普通のscript」に変更 -->
+    <script src="./app.js"></script>
+</body>
+
+</html>

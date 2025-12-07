@@ -1,0 +1,329 @@
+/* ===== ベース ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    background: radial-gradient(circle at top left, #e0e7ff, #f5e1ff, #fdf2ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #0f172a;
+}
+
+/* 画面中央にカードを置く */
+.app-shell {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+}
+
+/* スマホカード本体 */
+.chat-card {
+    width: 380px;
+    max-width: 100%;
+    height: 720px;
+    background: #ffffff;
+    border-radius: 28px;
+    box-shadow: 0 22px 45px rgba(15, 23, 42, 0.35);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== ヘッダー ===== */
+.chat-header {
+    height: 70px;
+    padding: 14px 18px;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-btn {
+    border: none;
+    background: rgba(15, 23, 42, 0.16);
+    color: #ffffff;
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.15s, transform 0.05s;
+}
+
+.icon-btn:hover {
+    background: rgba(15, 23, 42, 0.26);
+}
+
+.icon-btn:active {
+    transform: scale(0.96);
+}
+
+.chat-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chat-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.chat-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.chat-user-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-user-name {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.chat-user-status {
+    font-size: 11px;
+    color: #e5e7eb;
+}
+
+.chat-header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ===== メイン（メッセージ + クイック） ===== */
+.chat-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 14px 8px;
+    background: #f3f4f6;
+    min-height: 0;
+}
+
+/* メッセージエリア */
+.chat-window {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 12px 10px;
+    overflow-y: auto;
+    box-shadow: 0 6px 16px rgba(148, 163, 184, 0.3);
+    min-height: 0;
+}
+
+/* スクロールバー */
+.chat-window::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-window::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.7);
+    border-radius: 999px;
+}
+
+/* メッセージ行 */
+.message-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.message-row.bot {
+    align-items: flex-start;
+}
+
+.message-row.user {
+    align-items: flex-end;
+}
+
+/* ふきだし */
+.message-bubble {
+    max-width: 78%;
+    padding: 9px 13px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-break: break-word;
+    animation: bubble-in 0.15s ease-out;
+}
+
+.message-row.bot .message-bubble {
+    background: #e5e7eb;
+    color: #0f172a;
+    border-bottom-left-radius: 4px;
+}
+
+.message-row.user .message-bubble {
+    background: #4f46e5;
+    color: #f9fafb;
+    border-bottom-right-radius: 4px;
+}
+
+/* タイムスタンプ */
+.timestamp {
+    font-size: 10px;
+    color: #9ca3af;
+    margin-top: 2px;
+}
+
+/* ふきだしアニメーション */
+@keyframes bubble-in {
+    from {
+        transform: translateY(3px) scale(0.96);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* ===== クイック返信 ===== */
+.quick-replies {
+    margin-top: 10px;
+}
+
+.quick-title {
+    font-size: 11px;
+    color: #6b7280;
+    margin-bottom: 4px;
+}
+
+.quick-scroll {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+}
+
+.quick-scroll::-webkit-scrollbar {
+    height: 4px;
+}
+
+.quick-scroll::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.7);
+    border-radius: 999px;
+}
+
+.quick-btn {
+    border: 1px solid #c7d2fe;
+    background: #eef2ff;
+    color: #4338ca;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 11px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.05s, box-shadow 0.15s;
+    box-shadow: 0 1px 3px rgba(148, 163, 184, 0.6);
+}
+
+.quick-btn:hover {
+    background: #e0e7ff;
+}
+
+.quick-btn:active {
+    transform: scale(0.96);
+}
+
+/* ===== 入力エリア ===== */
+.input-area {
+    padding: 10px 16px 14px;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.input-wrapper {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 999px;
+    padding: 4px 12px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(148, 163, 184, 0.6);
+}
+
+.input-wrapper input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 13px;
+    color: #0f172a;
+}
+
+.input-wrapper input::placeholder {
+    color: #9ca3af;
+}
+
+.icon-circle-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    border: none;
+    background: #e0e7ff;
+    color: #4f46e5;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(148, 163, 184, 0.7);
+    transition: background 0.15s, transform 0.05s, box-shadow 0.15s;
+}
+
+.icon-circle-btn:hover {
+    background: #c7d2fe;
+}
+
+.icon-circle-btn:active {
+    transform: translateY(1px) scale(0.97);
+    box-shadow: 0 2px 6px rgba(148, 163, 184, 0.8);
+}
+
+.send-btn {
+    background: #4f46e5;
+    color: #ffffff;
+}
+
+/* スマホ幅対応 */
+@media (max-width: 480px) {
+    .chat-card {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
+}
